@@ -42,7 +42,7 @@ const Login = ({ history }) => {
           <div className='offset-lg-5 col-lg-7'>
             <input className='form-control col-lg-10' type='password' id='password' required></input>
           </div>
-          <h1>{this.setMensaje}</h1>
+          <h1> { mensaje }</h1>
           <div id='boton'>
             <button type="submit" className="btn btn-success offset-lg-4">Ingresar</button>
 
