@@ -3,8 +3,8 @@ import { withRouter, Redirect } from "react-router";
 import app from "./base.js";
 import { AuthContext } from "./Auth.js";
 
-
 const Login = ({ history }) => {
+  this.state = {mensaje : ' '}
   const handleLogin = useCallback(
     async event => {
       event.preventDefault();
@@ -15,43 +15,41 @@ const Login = ({ history }) => {
           .signInWithEmailAndPassword(email.value, password.value);
         history.push("/");
       } catch (error) {
-        alert(error);
+        //alert(error);
+        this.setState({mensaje: ' Error en el usuario'});
       }
     },
     [history]
   );
-
   const { currentUser } = useContext(AuthContext);
-
   if (currentUser) {
     return <Redirect to="/" />;
   }
-
   return (
     <div>
-            <div className="row">
-                <form id='inicio' onSubmit={handleLogin}  className='container'>
-                    <div className='offset-lg-4'><label id='h1' >Iniciar Sesion</label></div>
-                    <div className='col-lg-12'>
-                        <label>Correo Electronico:</label>
-                    </div>
-                    <div className='offset-lg-5 col-lg-7'>
-                        <input className='form-control col-lg-10' type='email' id='email'></input>
-                    </div>
-                    <div className='col-lg-12'>
-                        <label>Contraseña:</label>
-                    </div>
-                    <div className='offset-lg-5 col-lg-7'>
-                        <input className='form-control col-lg-10' type='password' id='password' ></input>
-                    </div>
+      <div className="row">
+        <form id='inicio' onSubmit={handleLogin} className='container'>
+          <div className='offset-lg-4'><label id='h1' >Iniciar Sesion</label></div>
+          <div className='col-lg-12'>
+            <label>Correo Electronico:</label>
+          </div>
+          <div className='offset-lg-5 col-lg-7'>
+            <input className='form-control col-lg-10' type='email' id='email'required></input>
+          </div>
+          <div className='col-lg-12'>
+            <label>Contraseña:</label>
+          </div>
+          <div className='offset-lg-5 col-lg-7'>
+            <input className='form-control col-lg-10' type='password' id='password' required></input>
+          </div>
+          <h1>{this.state.mensaje}</h1>
+          <div id='boton'>
+            <button type="submit" className="btn btn-success offset-lg-4">Ingresar</button>
 
-                    <div id='boton'>
-                        <button type="submit"  className="btn btn-success offset-lg-4">Ingresar</button>    
-                    </div>
-                </form>
-            </div>
-        </div>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 };
-
 export default withRouter(Login);
