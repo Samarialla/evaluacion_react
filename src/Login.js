@@ -1,10 +1,10 @@
-import React, { useCallback, useContext } from "react";
+import React, { useCallback, useContext, useState } from "react";
 import { withRouter, Redirect } from "react-router";
 import app from "./base.js";
 import { AuthContext } from "./Auth.js";
 
 const Login = ({ history }) => {
-  this.state = {mensaje : ' '}
+  const [mensaje, setMensaje] = useState('');
   const handleLogin = useCallback(
     async event => {
       event.preventDefault();
@@ -16,7 +16,7 @@ const Login = ({ history }) => {
         history.push("/");
       } catch (error) {
         //alert(error);
-        this.setState({mensaje: ' Error en el usuario'});
+        setMensaje("Error en el nombre de usuario");
       }
     },
     [history]
@@ -42,7 +42,7 @@ const Login = ({ history }) => {
           <div className='offset-lg-5 col-lg-7'>
             <input className='form-control col-lg-10' type='password' id='password' required></input>
           </div>
-          <h1>{this.state.mensaje}</h1>
+          <h1>{this.setMensaje}</h1>
           <div id='boton'>
             <button type="submit" className="btn btn-success offset-lg-4">Ingresar</button>
 
