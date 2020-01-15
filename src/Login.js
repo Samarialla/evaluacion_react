@@ -16,7 +16,8 @@ const Login = ({ history }) => {
         history.push("/");
       } catch (error) {
         //alert(error);
-        setMensaje("Error en el nombre de usuario");
+       
+        setMensaje("Error en el inicio de session");
       }
     },
     [history]
@@ -42,7 +43,7 @@ const Login = ({ history }) => {
           <div className='offset-lg-5 col-lg-7'>
             <input className='form-control col-lg-10' type='password' id='password' required></input>
           </div>
-          <h1> { mensaje }</h1>
+          <p id='error'> { mensaje }</p>
           <div id='boton'>
             <button type="submit" className="btn btn-success offset-lg-4">Ingresar</button>
 

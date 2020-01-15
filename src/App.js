@@ -7,6 +7,8 @@ import SignUp from "./SignUp";
 import { AuthProvider } from "./Auth";
 import PrivateRoute from "./PrivateRoute";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'font-awesome/css/font-awesome.min.css'
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 
 const App = () => {
   return (
