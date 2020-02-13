@@ -16,7 +16,7 @@ const Login = ({ history }) => {
         history.push("/");
       } catch (error) {
         //alert(error);
-       
+
         setMensaje("Error en el inicio de session");
       }
     },
@@ -30,15 +30,15 @@ const Login = ({ history }) => {
     <div>
       <div className="row">
         <form id='inicio' onSubmit={handleLogin} className='container'>
-          <div className='offset-lg-4'><label id='h1' >Iniciar Sesion</label></div>
+          <div className='offset-lg-4'><label id='label' >Iniciar Sesion</label></div>
           <div className='col-lg-12'>
-            <label>Correo Electronico:</label>
+            <label id='label'>Correo Electronico:</label>
           </div>
           <div className='offset-lg-5 col-lg-7'>
             <input className='form-control col-lg-10' type='email' id='email'required></input>
           </div>
           <div className='col-lg-12'>
-            <label>Contraseña:</label>
+            <label id='label'>Contraseña:</label>
           </div>
           <div className='offset-lg-5 col-lg-7'>
             <input className='form-control col-lg-10' type='password' id='password' required></input>
