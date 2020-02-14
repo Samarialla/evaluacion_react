@@ -22,8 +22,10 @@ const Login = ({ history }) => {
     },
     [history]
   );
+
+  /*funcion para ingresar directamente el home js sin necesidad del loguerse*/ 
   const { currentUser } = useContext(AuthContext);
-  if (currentUser) {
+ if (currentUser) {
     return <Redirect to="/" />;
   }
   return (
