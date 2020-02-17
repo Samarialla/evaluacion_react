@@ -30,15 +30,15 @@ function Lista() {
         return (
             res.producto.toLowerCase().indexOf(search.toLowerCase()) != -1)
     });
-    const handleOpenModal = (producto) => {
-       // producto.preventDefault();
-        const productoNombre = () => this.setState({ productoSeleccionado: producto })
+    const handleOpenModal = (producto, event) => {
+        event.preventDefault();
+        console.log(producto)
+        setproductoSeleccionado(producto)
         Modal.setAppElement('body');
         setModal(true);
-        console.log(productoNombre)
-       return;
-
-    }
+        console.log(producto)
+        return
+        }
     const handleCloseModal = event => {
         event.preventDefault();
         setModal(false)
@@ -73,7 +73,7 @@ function Lista() {
 
                                 <div className="row btn-group">
                                     <form id="anadir">
-                                        <button className="btn btn-info btn-sm col-lg-4" id="vermas"  onClick={handleOpenModal(item.producto)}>Ver mas</button>
+                                        <button className="btn btn-info btn-sm col-lg-4" id="vermas"  onClick={(event) => handleOpenModal(item, event)}>Ver mas</button>
                                         <button className="btn btn-danger btn-sm col-lg-4" value='' id="enviar" >Añadir </button>
                                         <input className="btn-sm col-lg-12" id="" name="" type='number' placeholder="1" min="1" max={item.cantidad} style={{ width: "130px" }} />
                                     </form>
@@ -85,12 +85,12 @@ function Lista() {
             </div>
             <Modal isOpen={modal} contentLabel="onRequestClose Example" onRequestClose={handleCloseModal} className="Modal">
                 <div className='imagen-modal'>
-                    <img className="responsive-img" src='' alt='thumbnail' />
+                    <img className="responsive-img" src={productoSeleccionado.url} alt='thumbnail' />
                 </div>
                 <h4>  </h4>
-                <p><b>Producto: </b> </p>
-                <p><b>Precio: </b>$<span></span></p>
-                <p><b>Unidades Disponibles: </b><span></span> </p>
+                <p><b>Producto: </b> {productoSeleccionado.producto} </p>
+                <p><b>Precio: </b>$<span>{productoSeleccionado.precio}</span></p>
+                <p><b>Unidades Disponibles: </b><span>{productoSeleccionado.cantidad}</span> </p>
                 <button className="btn btn-info btn-sm col-lg-4" onClick={handleCloseModal} >Cerrar</button>
             </Modal>
 

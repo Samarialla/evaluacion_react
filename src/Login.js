@@ -23,7 +23,7 @@ const Login = ({ history }) => {
     [history]
   );
 
-  /*funcion para ingresar directamente el home js sin necesidad del loguerse*/ 
+  /*funcion para ingresar directamente el home js sin necesidad del loguerse si ya fue logueado*/ 
   const { currentUser } = useContext(AuthContext);
  if (currentUser) {
     return <Redirect to="/" />;
