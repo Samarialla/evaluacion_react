@@ -6,12 +6,9 @@ import Lista from './Lista';
 const Home = () => {
   return (
     <>
-      <Nav/>
-      <Lista/>
-
-   </>
-   
-    
+      <Nav />
+      <Lista />
+    </>
   );
 };
 

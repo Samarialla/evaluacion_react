@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Modal from 'react-modal'
 
 
@@ -12,6 +11,8 @@ function Lista() {
     const [search, setSearch] = useState("");
     const [modal, setModal] = useState(false);
     const [productoSeleccionado, setproductoSeleccionado] = useState('');
+    const [additem, setAddItem] = useState('');
+    const [shop, setShop] = useState('');
     const fetchItems = async () => {
         const data = await fetch(
             "https://tarea-add74.firebaseio.com/bodega/.json"
@@ -32,27 +33,37 @@ function Lista() {
     });
     const handleOpenModal = (producto, event) => {
         event.preventDefault();
-        console.log(producto)
         setproductoSeleccionado(producto)
         Modal.setAppElement('body');
         setModal(true);
-        console.log(producto)
         return
-        }
+    }
     const handleCloseModal = event => {
         event.preventDefault();
         setModal(false)
     }
 
-    return (
+    const handleAddItem = (producto, event) => {
+        event.preventDefault();
+        const ob_unidos = Object.assign(producto,additem)
+        setShop(ob_unidos)
+        console.log(shop)
+        //this.props.shop;
+    }
 
+    const onItem = e => {
+        setAddItem(e.target.value);
+    };
+
+    return (
+    
         <div id="home" className="container-fluid">
             <div className="row">
                 <div id="cata" className="col-8">Catalogos de Productos </div>
                 <div id="buscador" className="col-4">
                     <div className="col-lg-12">
                         <label id="que"> ¿Que estas buscando</label>
-                        <input className="form-control col-lg-8 offset-lg-4" label="search" icon="search" type="text" onChange={onchange} value={search}
+                        <input className="form-control col-lg-8 offset-lg-4" label="search" icon="search" type="text" onChange={onchange}
                             placeholder="Busca Producto"></input>
                     </div>
                 </div>
@@ -62,7 +73,7 @@ function Lista() {
                 {filter.map(item => (
                     <React.Fragment key={item.producto}>
                         <div className="card col-lg-2 col-sm-12 collection" >
-                            <img src={item.url} className="img-thumbnail imgProd" />
+                            <img src={item.url} className=" imgProd" />
                             <div className="col-sm-12">
                                 <label className="nombreProd"><b>Producto: </b> {item.producto} </label>
                                 <br></br>
@@ -73,9 +84,9 @@ function Lista() {
 
                                 <div className="row btn-group">
                                     <form id="anadir">
-                                        <button className="btn btn-info btn-sm col-lg-4" id="vermas"  onClick={(event) => handleOpenModal(item, event)}>Ver mas</button>
-                                        <button className="btn btn-danger btn-sm col-lg-4" value='' id="enviar" >Añadir </button>
-                                        <input className="btn-sm col-lg-12" id="" name="" type='number' placeholder="1" min="1" max={item.cantidad} style={{ width: "130px" }} />
+                                        <button className="btn btn-info btn-sm col-lg-5" id="vermas" onClick={(event) => handleOpenModal(item, event)}>Ver</button>
+                                        <button className="btn btn-danger btn-sm col-lg-5" onClick={(event) => handleAddItem(item, event)} id="enviar" >Añadir</button>
+                                        <input className="btn-sm col-lg-12"   type='number'  onChange={onItem}  min="1" max={item.cantidad} style={{ width: "130px" }} />
                                     </form>
                                 </div>
                             </div>
