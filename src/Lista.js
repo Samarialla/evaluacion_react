@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Modal from 'react-modal'
-
-
 function Lista() {
     useEffect(() => {
         fetchItems();
@@ -43,20 +41,17 @@ function Lista() {
         setModal(false)
     }
 
-    const handleAddItem = (producto, event) => {
+   const handleAddItem = (producto, event) => {
         event.preventDefault();
         const ob_unidos = Object.assign(producto,additem)
-        setShop(ob_unidos)
-        console.log(shop)
-        //this.props.shop;
+        setShop(ob_unidos);
+        this.props.agregarCantidadGlobal(producto.cantidad);
     }
 
     const onItem = e => {
         setAddItem(e.target.value);
     };
-
     return (
-    
         <div id="home" className="container-fluid">
             <div className="row">
                 <div id="cata" className="col-8">Catalogos de Productos </div>
@@ -86,7 +81,7 @@ function Lista() {
                                     <form id="anadir">
                                         <button className="btn btn-info btn-sm col-lg-5" id="vermas" onClick={(event) => handleOpenModal(item, event)}>Ver</button>
                                         <button className="btn btn-danger btn-sm col-lg-5" onClick={(event) => handleAddItem(item, event)} id="enviar" >Añadir</button>
-                                        <input className="btn-sm col-lg-12"   type='number'  onChange={onItem}  min="1" max={item.cantidad} style={{ width: "130px" }} />
+                                        <input className="btn-sm col-lg-10"   type='number'  onChange={onItem}  min="1" max={item.cantidad} style={{ width: "110%" }} />
                                     </form>
                                 </div>
                             </div>
@@ -102,7 +97,7 @@ function Lista() {
                 <p><b>Producto: </b> {productoSeleccionado.producto} </p>
                 <p><b>Precio: </b>$<span>{productoSeleccionado.precio}</span></p>
                 <p><b>Unidades Disponibles: </b><span>{productoSeleccionado.cantidad}</span> </p>
-                <button className="btn btn-info btn-sm col-lg-4" onClick={handleCloseModal} >Cerrar</button>
+                <button id='cerrar' className="btn btn-info btn-sm " onClick={handleCloseModal} >Cerrar</button>
             </Modal>
 
         </div>
