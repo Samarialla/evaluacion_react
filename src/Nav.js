@@ -7,7 +7,7 @@ const onCantidad = (producto, event) => {
      console.log((producto, event))
      return
 }
-const Nav = () => {
+const Nav = (props) => {
     return (
         <>
             <nav id='nav' className="navbar navbar-expand-lg navbar-light bg-light">
@@ -29,7 +29,10 @@ const Nav = () => {
                         </li>
                     </ul>   
                     <a><i className="fa fa-server" aria-hidden="true"></i></a>
-                    <a><i className="fa fa-cart-arrow-down" aria-hidden="true"><span> {this.props.cantidadEnCarrito}</span></i></a>
+                    <a className="quick-btn" href="#">
+                                <i className="fa fa-cart-arrow-down notificacion"></i><br/>
+                                <span className="label label-success" >{props.cantidadEnCarrito}</span>
+                            </a>
                     <a><i className="fa fa-shopping-bag" aria-hidden="true" ></i></a>
                     <a onClick={() => app.auth().signOut()} data-tip="Salir de Sistema"><i className="fa fa-sign-in" aria-hidden="true"></i></a>
                     <ReactTooltip />      

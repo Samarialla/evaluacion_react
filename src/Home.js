@@ -2,15 +2,20 @@ import React, { useState} from "react";
 import Nav from './Nav';
 import Lista from './Lista';
 
-const Home = () => {
-  const [cantidadCarrito, setcantidadCarrito] = useState('');
+const Home = (props) => {
+  const [cantidadCarrito, setcantidadCarrito] = useState(0);
+  const [cantidadCarritototal, setcantidadCarritototal] = useState('');
   const agregarCantidad = (cantidad) => {
-    setcantidadCarrito(cantidadCarrito + cantidad)
+    if(cantidad !== -1 || cantidadCarrito !== -1){
+      const suma = (cantidadCarrito + cantidad)
+      setcantidadCarrito(suma);
+      setcantidadCarritototal(suma)
+    }
   }
   return (
     <>
-      <Nav cantidadEnCarrito={this.cantidadCarrito} />
-      <Lista agregarCantidadGlobal={this.agregarCantidad} />
+      <Nav cantidadEnCarrito={cantidadCarritototal} />
+      <Lista agregarCantidadGlobal={agregarCantidad} />
     </>
   );
 };

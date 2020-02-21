@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Modal from 'react-modal'
-function Lista() {
+function Lista(props) {
     useEffect(() => {
         fetchItems();
     }, []);
@@ -45,7 +45,7 @@ function Lista() {
         event.preventDefault();
         const ob_unidos = Object.assign(producto,additem)
         setShop(ob_unidos);
-        this.props.agregarCantidadGlobal(producto.cantidad);
+        props.agregarCantidadGlobal(parseInt(additem));
     }
 
     const onItem = e => {
