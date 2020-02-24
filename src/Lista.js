@@ -46,6 +46,7 @@ function Lista(props) {
         const ob_unidos = Object.assign(producto,additem)
         setShop(ob_unidos);
         props.agregarCantidadGlobal(parseInt(additem));
+        props.agregarProductos(ob_unidos);
     }
 
     const onItem = e => {

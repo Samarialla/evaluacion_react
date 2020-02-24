@@ -386,3 +386,14 @@ margin-right: 1%;
   
 
 }
+
+
+/*productos del componente*/
+
+.descripcion{
+  height: 110px !important;
+}
+.subtotal{
+  font-size: 20px;
+  margin-top: 5%;
+}
