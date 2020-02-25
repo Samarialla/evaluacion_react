@@ -43,7 +43,7 @@ function Lista(props) {
 
    const handleAddItem = (producto, event) => {
         event.preventDefault();
-        const ob_unidos = Object.assign(producto,additem)
+        const ob_unidos  = Object.assign(producto,additem)
         setShop(ob_unidos);
         props.agregarCantidadGlobal(parseInt(additem));
         props.agregarProductos(ob_unidos);
@@ -82,7 +82,7 @@ function Lista(props) {
                                     <form id="anadir">
                                         <button className="btn btn-info btn-sm col-lg-5" id="vermas" onClick={(event) => handleOpenModal(item, event)}>Ver</button>
                                         <button className="btn btn-danger btn-sm col-lg-5" onClick={(event) => handleAddItem(item, event)} id="enviar" >Añadir</button>
-                                        <input className="btn-sm col-lg-10"   type='number'  onChange={onItem}  min="1" max={item.cantidad} style={{ width: "110%" }} />
+                                        <input className="btn-sm col-lg-10" id='total'  type='number'  onChange={onItem}  min="1" max={item.cantidad} style={{ width: "110%" }} />
                                     </form>
                                 </div>
                             </div>

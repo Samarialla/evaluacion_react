@@ -9,11 +9,22 @@ const Productos = (props) => {
         console.log(productos);
         console.log(props);
         console.log(props.itemcarro);
+        var cantidad = props.itemcarro
+        var total = cantidad.split(' ');
+        console.log(cantidad)
+    }
+  
+
+    const prueba = ()=>{
+        let cantidad = props.itemcarro
+        let total = cantidad.split(',')[0];
+        //setAddproductos(total)
+        console.log(total)
     }
 
     return (
         <React.Fragment>
-            <Nav />
+            
             <div className="container-fluid">
                 <div className="row card-body">
                     <div className="row card col-sm-12">
@@ -25,15 +36,15 @@ const Productos = (props) => {
                             <div className="col-sm-7 productosSel">
                                 <div className="row">
                                     <div className="col-sm-3">
-                                        <img src='' className="img-thumbnail imgProd" />
+                                        <img src={props.itemcarro.url} className="img-thumbnail imgProd" />
                                     </div>
                                     <div className="col-sm-9 descripcion">
                                         <h2> <label className="nombreProd"><b><span></span></b></label></h2>
 
-                                        <label className="cantidadProd"><b>Unidades:</b>
+                                        <label className="cantidadProd"><b>Unidades: </b>
                                             <span></span></label>
                                         <br></br>
-                                        <label className="precioProd"><b>Precio Unidad:</b>  </label>
+                                        <label className="precioProd"><b>Precio Unidad: $</b>{props.itemcarro.precio} </label>
 
                                     </div>
                                 </div>
