@@ -1,30 +1,16 @@
-import React, { useState, useEffect } from "react";
-import Nav from './Nav';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import React, { useState} from "react";
 const Productos = (props) => {
-    const [addproductos, setAddproductos] = useState('');
-    const [productoscarro, setProductoscarro] = useState('');
-
-    const itemProductos = (productos) => {
-        console.log(productos);
-        console.log(props);
-        console.log(props.itemcarro);
-        var cantidad = props.itemcarro
-        var total = cantidad.split(' ');
-        console.log(cantidad)
+    const [addproductos, setAddproductos] = useState();
+    const itemProductos = () => {
+    console.log(props.itemcarro)
+        for(var i = 0; i<props.itemcarro;i++ ){
+            setAddproductos(props.itemcarro[i]);
+            console.log({addproductos})
+        }   
     }
   
-
-    const prueba = ()=>{
-        let cantidad = props.itemcarro
-        let total = cantidad.split(',')[0];
-        //setAddproductos(total)
-        console.log(total)
-    }
-
     return (
-        <React.Fragment>
-            
+        <React.Fragment>        
             <div className="container-fluid">
                 <div className="row card-body">
                     <div className="row card col-sm-12">
@@ -41,7 +27,7 @@ const Productos = (props) => {
                                     <div className="col-sm-9 descripcion">
                                         <h2> <label className="nombreProd"><b><span></span></b></label></h2>
 
-                                        <label className="cantidadProd"><b>Unidades: </b>
+                                        <label className="cantidadProd"><b>Unidades:{props.itemcarro.cantidad} </b>
                                             <span></span></label>
                                         <br></br>
                                         <label className="precioProd"><b>Precio Unidad: $</b>{props.itemcarro.precio} </label>

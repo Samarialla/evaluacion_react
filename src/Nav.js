@@ -1,19 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import app from './base'
 import ReactTooltip from 'react-tooltip'
-import Productos from "./Productos";
-import ReactDOM from 'react-dom';
-import Lista from './Lista';
-import { Link } from "react-router-dom";
 
 
 const Nav = (props) => {
-    const [menu, setmenu] = useState(0);
-
     const ProductosMostrar = () => {
        props.mostrar('')
     }
-
     const mostrarMenu = ()=>{
         props.mostrarMenulista('')
     }

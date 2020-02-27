@@ -9,8 +9,8 @@ function Lista(props) {
     const [search, setSearch] = useState("");
     const [modal, setModal] = useState(false);
     const [productoSeleccionado, setproductoSeleccionado] = useState('');
-    const [additem, setAddItem] = useState('');
-    const [shop, setShop] = useState('');
+    const [additem, setAddItem] = useState();
+    const [shop, setShop] = useState([]);
     const fetchItems = async () => {
         const data = await fetch(
             "https://tarea-add74.firebaseio.com/bodega/.json"
@@ -43,10 +43,12 @@ function Lista(props) {
 
    const handleAddItem = (producto, event) => {
         event.preventDefault();
-        const ob_unidos  = Object.assign(producto,additem)
-        setShop(ob_unidos);
+         const ob_unidos  = Object.assign(producto,additem);
+         var newShop = shop.concat(ob_unidos);
+         console.log(newShop);
+         setShop(newShop)
         props.agregarCantidadGlobal(parseInt(additem));
-        props.agregarProductos(ob_unidos);
+        props.agregarProductos(newShop);
     }
 
     const onItem = e => {
@@ -79,11 +81,11 @@ function Lista(props) {
                                 </div>
 
                                 <div className="row btn-group">
-                                    <form id="anadir">
-                                        <button className="btn btn-info btn-sm col-lg-5" id="vermas" onClick={(event) => handleOpenModal(item, event)}>Ver</button>
+                                    <div className ="anadir">
+                                        <button className="btn btn-info btn-sm col-lg-5 vermas"  onClick={(event) => handleOpenModal(item, event)}>Ver</button>
                                         <button className="btn btn-danger btn-sm col-lg-5" onClick={(event) => handleAddItem(item, event)} id="enviar" >Añadir</button>
-                                        <input className="btn-sm col-lg-10" id='total'  type='number'  onChange={onItem}  min="1" max={item.cantidad} style={{ width: "110%" }} />
-                                    </form>
+                                        <input className="btn-sm col-lg-10"  type='number'  onChange={onItem}  min="1" max={item.cantidad} style={{ width: "110%" }} />
+                                    </div>
                                 </div>
                             </div>
                         </div>
