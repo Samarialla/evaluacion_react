@@ -18,7 +18,6 @@ const Home = (props) => {
   }
   const item = (productos) => {
     setProductoscarro(productos)
-    console.log('home ' + JSON.stringify(productoscarro))
   }
   const mostrarMenu = () => {
     setHome(true)
@@ -26,15 +25,6 @@ const Home = (props) => {
   const menulista = ()=>{
     setHome(false)
   }
-
-  /* return (
-     <>
-       <Nav cantidadEnCarrito={cantidadCarritototal} itemcarro={productoscarro} />
- 
-       <Lista agregarCantidadGlobal={agregarCantidad} agregarProductos={item} />
-       <Productos />
-     </>
-   );*/
 
   if (!home) {
     return (

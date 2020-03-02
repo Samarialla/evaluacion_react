@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Modal from 'react-modal'
+import Modal from 'react-modal';
+import NumberFormat from 'react-number-format';
 function Lista(props) {
     useEffect(() => {
         fetchItems();
@@ -43,9 +44,8 @@ function Lista(props) {
 
    const handleAddItem = (producto, event) => {
         event.preventDefault();
-         const ob_unidos  = Object.assign(producto,additem);
+         const ob_unidos  = Object.assign(producto,{productoagregado:additem});
          var newShop = shop.concat(ob_unidos);
-         console.log(newShop);
          setShop(newShop)
         props.agregarCantidadGlobal(parseInt(additem));
         props.agregarProductos(newShop);
@@ -75,7 +75,7 @@ function Lista(props) {
                             <div className="col-sm-12">
                                 <label className="nombreProd"><b>Producto: </b> {item.producto} </label>
                                 <br></br>
-                                <label className="precioProd"><b>Precio: </b> $<span>{item.precio}</span></label>
+                                <label className="precioProd"><b>Precio: </b> <span><NumberFormat value={item.precio} displayType={'text'} thousandSeparator={true} prefix={'$'} /></span></label>
                                 <label className="cantidadProd"><b>U. disponibles:</b> <span>{item.cantidad}</span></label>
                                 <div className="col-sm-5 accionProd">
                                 </div>
